@@ -66,6 +66,10 @@ const CreateOrder = ({ onSetOrders }) => {
       ...order,
       amount: total,
     };
+    if(newOrder.customerName === "" || newOrder.orderItem.length===0){
+      alert('Please fill the form properly!')
+      return
+    }
     onSetOrders((prevOrders) => [...prevOrders, newOrder]);
 
     setOrder({
@@ -97,6 +101,7 @@ const CreateOrder = ({ onSetOrders }) => {
           id="customerName"
           value={order.customerName}
           onChange={handleChange}
+          required
           className="w-full bg-gray-700/50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
         />
       </div>
